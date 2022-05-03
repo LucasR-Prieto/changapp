@@ -33,15 +33,17 @@ def index():
     return render_template("index.html")
 
 
-@app.route("/login", methods=['POST'])
+@app.route("/login", methods=['POST','GET'])
 def login():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
         return redirect(url_for('index'))
+    else:
+        return render_template('login.html')
 
 
-@app.route('/register', methods=['POST'])
+@app.route('/register', methods=['POST','GET'])
 def register(): 
     if request.method == 'POST':
         user = User(
@@ -55,19 +57,31 @@ def register():
         db.session.add(user)
         db.session.commit()
         return redirect(url_for('login'))
+    else:
+        return render_template('register.html')
+
+    
 
 
-@app.route('/create-job', methods=['POST']) 
+@app.route('/create-job', methods=['POST','GET']) 
 def create_job():
-    job = Job(
-        job_name=request.form['job_name'],
-        job_desc=request.form['job_desc'],
-        job_price=request.form['job_price'],
-        job_done = False
-    )
-    db.session.add(job)
-    db.session.commit()
-    return redirect (url_for('index'))
+    if request.method == 'POST':
+        job = Job(
+            job_name=request.form['job_name'],
+            job_desc=request.form['job_desc'],
+            job_price=request.form['job_price'],
+            job_done = False
+        )
+        db.session.add(job)
+        db.session.commit()
+        return redirect(url_for('find_job'))
+    else:
+        return render_template('create_job.html')
+
+@app.route('/find-job', methods=['GET']) 
+def find_job():
+    jobs= Job.query.all()
+    return render_template('find_job.html', jobs=jobs)
 
 
 
