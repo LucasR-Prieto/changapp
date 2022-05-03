@@ -3,7 +3,6 @@ from flask import Flask , render_template, url_for ,request , redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import true
 
-#from requests import request
 
 # congifuracion de la base de datos y de flask
 app = Flask(__name__)
@@ -28,20 +27,19 @@ class Job(db.Model): # datos empleo
     job_done = db.Column(db.Boolean(200))
 
 
-
 #configuracion inicio y datos para la base de datos
+@app.route("/")
+def index():
+    return render_template("index.html")
+
 
 @app.route("/login", methods=['POST'])
 def login():
     if request.method == 'POST':
         email = request.form['email']
         password = request.form['password']
-    return redirect(url_for('index'))
+        return redirect(url_for('index'))
 
-
-@app.route("/")
-def index():
-    return render_template("index.html") 
 
 @app.route('/register', methods=['POST'])
 def register(): 
@@ -61,11 +59,12 @@ def register():
 
 @app.route('/create-job', methods=['POST']) 
 def create_job():
-    job = Job(job_name=request.form['job_name'],
-                job_desc=request.form['job_desc'],
-                job_price=request.form['job_price'],
-                job_done = False
-            )
+    job = Job(
+        job_name=request.form['job_name'],
+        job_desc=request.form['job_desc'],
+        job_price=request.form['job_price'],
+        job_done = False
+    )
     db.session.add(job)
     db.session.commit()
     return redirect (url_for('index'))
