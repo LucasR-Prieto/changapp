@@ -1,3 +1,118 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+
+    }
+</style>
+
+<body class="bg-emerald-800">
+    {% for job in jobs %}
+    <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="bg-white rounded-md">
+            <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+                <div class="space-y-8 divide-y divide-gray-200">
+
+                    <div class="p-10">
+                        <!--Card 1-->
+                        <div container { display: flex; flex-direction: column; justify-content: center; }>
+                            <div class="max-w-sm rounded overflow-hidden shadow-lg">
+                                <div class="px-6 py-4">
+                                    <div class="font-bold text-xl mb-2">{{ job.job_name }}</div>
+                                    <p class="text-gray-700 text-base">{{ job.job_desc }}</p>
+                                </div>
+                                <div class="px-6 pt-4 pb-2">
+
+                                    <span
+                                        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                                        #Plomeria </span>
+                                    </br>
+                                    <div class="px- pt-2 pb-">
+                                        <p class="text-black text-base">Salario: {{ job.job_price }}</p>
+
+                                        <p class="text-gray-700 text-base">
+                                            Disponible hasta: 23/05/2050 </p>
+                                    </div>
+                                    </p>
+                                </div>
+                            </div><br><br>
+                            <div class="max-w-sm rounded overflow-hidden shadow-lg">
+
+                                <div class="px-6 py-4">
+                                    <div class="font-bold text-xl mb-2">Diseñador/a</div>
+                                    <p class="text-gray-700 text-base">
+                                        Necesito el diseño de 1 flyer y de unas etiquetas para productos
+                                        En alta calidad para imprimirlos
+                                        Enviar editables ,contamos con logo y colores para su estructura.
+
+                                    </p>
+                                </div>
+                                <div class="px-6 pt-4 pb-2">
+
+                                    <span
+                                        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">
+                                        #Diseño </span>
+                                    </br>
+                                    <div class="px- pt-2 pb-">
+                                        <p class="text-black text-base">
+                                            Salario: 50.000Gs la hora. </p>
+
+                                        <p class="text-gray-700 text-base">
+                                            Disponible hasta: 23/05/2050 </p>
+                                    </div>
+                                    </p>
+                                </div>
+                            </div><br><br>
+                            <div class="max-w-sm rounded overflow-hidden shadow-lg">
+
+                                <div class="px-6 py-4">
+                                    <div class="font-bold text-xl mb-2">Jardinero</div>
+                                    <p class="text-gray-700 text-base">
+                                        Busco jardinero para poda de arboles ornamentales, cortar el cesped y
+                                        hermoseamiento del jardin, zona residencial.
+
+                                    </p>
+                                </div>
+                                <div class="px-6 pt-4 pb-2">
+                                    <span
+                                        class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-semibold text-gray-700 mr-2 mb-2">#Jardinero</span>
+
+                                    </br>
+                                    <div class="px- pt-2 pb-">
+                                        <p class="text-black text-base">
+                                            Salario: 60.000Gs la hora. </p>
+
+                                        <p class="text-gray-700 text-base">
+                                            Disponible hasta: 23/05/2050 </p>
+                                    </div>
+                                    </p>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    {% endfor %}
+</body>
+
+</html>
+
+
+
+
+<!--
 <!DOCTYPE html>
 <html lang="en">
 <head>
