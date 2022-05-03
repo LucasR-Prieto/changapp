@@ -1,5 +1,5 @@
 
-from flask import Flask , render_template, url_for ,request , redirect, url_for
+from flask import Flask, render_template, url_for, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy import true
 
@@ -28,7 +28,7 @@ class Job(db.Model): # datos empleo
 
 
 #configuracion inicio y datos para la base de datos
-@app.route("/")
+@app.route("/", methods=['POST','GET'])
 def index():
     return render_template("index.html")
 
@@ -56,7 +56,7 @@ def register():
         )
         db.session.add(user)
         db.session.commit()
-        return redirect(url_for('login'))
+        return redirect(url_for('index'))
     else:
         return render_template('register.html')
 
@@ -65,6 +65,7 @@ def register():
 
 @app.route('/create-job', methods=['POST','GET']) 
 def create_job():
+    print(request.method)
     if request.method == 'POST':
         job = Job(
             job_name=request.form['job_name'],
@@ -72,10 +73,13 @@ def create_job():
             job_price=request.form['job_price'],
             job_done = False
         )
+        print('Hola entre aca')
+        print(job)
         db.session.add(job)
         db.session.commit()
         return redirect(url_for('find_job'))
     else:
+        print('entre en GET')
         return render_template('create_job.html')
 
 @app.route('/find-job', methods=['GET']) 
