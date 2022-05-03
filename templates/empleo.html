@@ -10,25 +10,22 @@
     <link rel="stylesheet" href="{{url_for('static',filename='main.css')}}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootswatch@4.5.2/dist/cyborg/bootstrap.min.css">
-    <title>---RUN---</title>
+    <title>ChangApp - Empleos</title>
 </head>
 
 <body container p-4>
-    <h1 class="display-4 text-center mt-4">Completa Tus datos </h1>
+    <h1 class="display-4 text-center mt-4">Formulario de empleos </h1>
     <div class "row">
         <div class="col-md-4 offset-md-4 my-auto">
             <div class="card">
                 <div class="card-header">
-                    <form action="/user" method="POST">
+                    <form action="/nuevo_empleo" method="POST">
                         <div class="fors-group ">
-                            <input type=" text" name="nombre" placeholder="usuario" class="form-control" autofocus>
-                            <input type=" text" name="apellido" placeholder="apellido" class="form-control" autofocus>
-                            <input type=" text" name="describe" placeholder="descripción" class="form-control"
-                                autofocus>
-                            <input type="password" name="contrasena" placeholder="contrasena" class="form-control"
-                                autofocus>
+                            <input type="text" name="nombre_empleo" placeholder="usuario" class="form-control" autofocus>
+                            <input type="text" name="descripcion" placeholder="Describe el laburo.." class="form-control" autofocus>
+                            <input type="text" name="precio" placeholder="Rango salarial" class="form-control" autofocus>
                         </div>
-                        <button type="submit" class="btn btn-primary btn-block">
+                        <button  type="submit" class="btn btn-primary btn-block" >
                             save
                         </button>
 
@@ -36,12 +33,11 @@
 
 
                 </div>
-
             </div>
-        </div>
 
+        </div>
     </div>
-    </div>
+<h2>asdasd</h2>
 
 </body>
 
