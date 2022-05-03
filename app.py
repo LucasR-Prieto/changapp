@@ -87,6 +87,10 @@ def find_job():
     jobs= Job.query.all()
     return render_template('find_job.html', jobs=jobs)
 
+@app.route('/user', methods=['GET']) 
+def profile():
+    users_profile= User.query.get(1)
+    return render_template('user.html', user=users_profile)
 
 
 #eliminar datos 
