@@ -17,7 +17,7 @@ login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
 
-class User(UserMixin, db.Model):# pedir datos usuario
+class User(UserMixin, db.Model):
     id = db.Column(db.Integer,primary_key=True)
     user_name = db.Column(db.String(200))
     user_last_name = db.Column(db.String(200))
@@ -47,7 +47,6 @@ class LoginForm(FlaskForm):
 
 #configuracion inicio y datos para la base de datos
 @app.route("/", methods=['POST','GET'])
-@login_required
 def index():
     return render_template("index.html", user=current_user)
 
@@ -88,7 +87,8 @@ def register():
     
 
 
-@app.route('/create-job', methods=['POST','GET']) 
+@app.route('/create-job', methods=['POST','GET'])
+@login_required
 def create_job():
     print(request.method)
     if request.method == 'POST':
@@ -107,12 +107,14 @@ def create_job():
         print('entre en GET')
         return render_template('create_job.html')
 
-@app.route('/find-job', methods=['GET']) 
+@app.route('/find-job', methods=['GET'])
+@login_required
 def find_job():
     jobs= Job.query.all()
     return render_template('find_job.html', jobs=jobs)
 
-@app.route('/user', methods=['GET']) 
+@app.route('/user', methods=['GET'])
+@login_required
 def profile():
     users_profile= User.query.get(1)
     return render_template('user.html', user=users_profile)
