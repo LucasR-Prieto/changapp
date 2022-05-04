@@ -18,7 +18,7 @@
             
             <div class="flex flex-col items-center p-10">
         <!--Card 1-->
-        {% for job in jobs %}
+        {% for job in jobs[::-1] %}
         <div class="bg-neutral-100 max-w-sm rounded shadow-lg border-t-4 border-orange-600 mt-3">
  
             <div class="px-6 py-4 ">
