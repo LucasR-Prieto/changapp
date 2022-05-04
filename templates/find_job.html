@@ -15,7 +15,7 @@
         <div class="bg-emerald-700 rounded-md">
             
             <br><p class="flex flex-col items-center align-center font-bold text-2xl text-neutral-100 p-auto tracking-wider	">OFERTAS LABORALES</p>
-            
+            <h1>{{ current_user.id }}</h1>
             <div class="flex flex-col items-center p-10">
         <!--Card 1-->
         {% for job in jobs[::-1] %}

@@ -1,14 +1,12 @@
 
 from flask import Flask, render_template, url_for, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
-from sqlalchemy import true
 from flask_wtf import FlaskForm
 from wtforms import PasswordField, EmailField, BooleanField
-from wtforms.validators import InputRequired, Email, Length
+from wtforms.validators import InputRequired, Length
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 
 
-# congifuracion de la base de datos y de flask
 app = Flask(__name__)
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///database/changapp.db'
 app.config['SECRET_KEY'] = 'mysupersecretultrasecretkey1234'
@@ -16,6 +14,7 @@ db  = SQLAlchemy(app)
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
+
 
 class User(UserMixin, db.Model):
     id = db.Column(db.Integer,primary_key=True)
@@ -27,12 +26,14 @@ class User(UserMixin, db.Model):
     user_done = db.Column(db.Boolean(200))
 
 
-class Job(db.Model): # datos empleo 
+class Job(db.Model):
     job_id = db.Column(db.Integer,primary_key=True)
+    job_user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
     job_name = db.Column(db.String(200))
     job_desc = db.Column(db.String(200))
     job_price = db.Column(db.String(200))
     job_done = db.Column(db.Boolean(200))
+
 
 @login_manager.user_loader
 def load_user(user_id):
@@ -45,7 +46,6 @@ class LoginForm(FlaskForm):
     remember = BooleanField('remember me')
 
 
-#configuracion inicio y datos para la base de datos
 @app.route("/", methods=['POST','GET'])
 def index():
     return render_template("index.html", user=current_user)
@@ -84,8 +84,6 @@ def register():
     else:
         return render_template('register.html')
 
-    
-
 
 @app.route('/create-job', methods=['POST','GET'])
 @login_required
@@ -93,6 +91,7 @@ def create_job():
     print(request.method)
     if request.method == 'POST':
         job = Job(
+            job_user_id=current_user.id,
             job_name=request.form['job_name'],
             job_desc=request.form['job_desc'],
             job_price=request.form['job_price'],
@@ -107,17 +106,21 @@ def create_job():
         print('entre en GET')
         return render_template('create_job.html')
 
+
 @app.route('/find-job', methods=['GET'])
 @login_required
 def find_job():
     jobs= Job.query.all()
+    print("asdasdasd")
+    print(current_user.id)
     return render_template('find_job.html', jobs=jobs)
+
 
 @app.route('/user', methods=['GET'])
 @login_required
 def profile():
-    users_profile= User.query.get(1)
-    return render_template('user.html', user=users_profile)
+    jobs = Job.query.filter_by(job_user_id=current_user.id)
+    return render_template('user.html', jobs=jobs)
 
 
 @app.route('/logout')

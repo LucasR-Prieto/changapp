@@ -72,8 +72,8 @@
         <div class="md:flex no-wrap md:-mx-2 ">
             <!-- Left Side -->
             <div class="w-full md:w-3/12 md:mx-2">
-                
-                
+
+
                 <!-- CARTA DE PERFIL E IMAGEN DE AVATAR -->
 
 
@@ -83,9 +83,9 @@
                             src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg"
                             alt="">
                     </div>
-                    <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{{user.user_name}}</h1>
+                    <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{{current_user.user_name}}</h1>
                     <h3 class="text-gray-600 font-lg text-semibold leading-6">Pinguina</h3>
-                    <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">{{user.user_desc}}</p>
+                    <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">{{current_user.user_desc}}</p>
                     <ul
                         class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
                         <li class="flex items-center py-3">
@@ -99,10 +99,10 @@
                         </li>
                     </ul>
                 </div>
-               
-               
+
+
                 <!-- FIN DE LA CARTA DE PERFIL -->
-           
+
             </div>
             <!-- Right Side -->
             <div class="w-full md:w-9/12 mx-2 h-64">
@@ -127,16 +127,16 @@
                         <div class="grid md:grid-cols-2 text-sm">
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">Nombre</div>
-                                <div class="px-4 py-2">{{user.user_name}}</div>
+                                <div class="px-4 py-2">{{current_user.user_name}}</div>
                             </div>
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">Apellido</div>
-                                <div class="px-4 py-2">{{user.user_last_name}}</div>
+                                <div class="px-4 py-2">{{current_user.user_last_name}}</div>
                             </div>
                             <div class="grid grid-cols-2">
                                 <div class="px-4 py-2 font-semibold">Email.</div>
                                 <div class="px-4 py-2">
-                                    <a class="text-blue-800" href="mailto:jane@example.com">{{user.user_email}}</a>
+                                    <a class="text-blue-800" href="mailto:jane@example.com">{{current_user.user_email}}</a>
                                 </div>
                             </div>
 
@@ -145,74 +145,110 @@
                     <!--<button
                         class="block w-full text-emerald-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">Mostrar mas informacion</button> -->
                 </div>
-                <div class="mb-4 border-b border-gray-200">
-                    <ul class="flex flex-wrap -mb-px text-sm font-medium text-center" id="myTab"
-                        data-tabs-toggle="#myTabContent" role="tablist">
-                        <li class="mr-2" role="presentation">
-                            <button
-                                class=" bg-emerald-700  text-white hover:text-black inline-block p-4 rounded-t-lg border-b-2"
-                                id="profile-tab" data-tabs-target="#profile" type="button" role="tab"
-                                aria-controls="profile" aria-selected="false">Oferta</button>
-                        </li>
-                        <li class="mr-2" role="presentation">
-                            <button
-                                class=" bg-emerald-700  text-white hover:text-black inline-block p-4 rounded-t-lg border-b-2"
-                                id="dashboard-tab" data-tabs-target="#dashboard" type="button" role="tab"
-                                aria-controls="dashboard" aria-selected="false">Solicitudes</button>
-                        </li>
-                        <div id="myTabContent">
-                            <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="profile" role="tabpanel"
-                                aria-labelledby="profile-tab">
-                                <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the
-                                    <strong class="font-medium text-gray-800 dark:text-white">Profile tab's associated
-                                        content</strong>. Clicking another tab will toggle the visibility of this one
-                                    for the next. The tab JavaScript swaps classes to control the content visibility and
-                                    styling.</p>
-                            </div>
-                            <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="dashboard"
-                                role="tabpanel" aria-labelledby="dashboard-tab">
-                                <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the
-                                    <strong class="font-medium text-gray-800 dark:text-white">Dashboard tab's associated
-                                        content</strong>. Clicking another tab will toggle the visibility of this one
-                                    for the next. The tab JavaScript swaps classes to control the content visibility and
-                                    styling.</p>
-                            </div>
-                            <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="settings" role="tabpanel"
-                                aria-labelledby="settings-tab">
-                                <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the
-                                    <strong class="font-medium text-gray-800 dark:text-white">Settings tab's associated
-                                        content</strong>. Clicking another tab will toggle the visibility of this one
-                                    for the next. The tab JavaScript swaps classes to control the content visibility and
-                                    styling.</p>
-                            </div>
-                            <div class="hidden p-4 bg-gray-50 rounded-lg dark:bg-gray-800" id="contacts" role="tabpanel"
-                                aria-labelledby="contacts-tab">
-                                <p class="text-sm text-gray-500 dark:text-gray-400">This is some placeholder content the
-                                    <strong class="font-medium text-gray-800 dark:text-white">Contacts tab's associated
-                                        content</strong>. Clicking another tab will toggle the visibility of this one
-                                    for the next. The tab JavaScript swaps classes to control the content visibility and
-                                    styling.</p>
+                <div class="flex flex-wrap" id="tabs-id">
+                    <div class="w-full">
+                        <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
+                            <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                                <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-white bg-pink-600"
+                                    onclick="changeAtiveTab(event,'tab-profile')">
+                                    <i class="fas fa-space-shuttle text-base mr-1"></i> Ofertas Creadas
+                                </a>
+                            </li>
+                            <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                                <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-pink-600 bg-white"
+                                    onclick="changeAtiveTab(event,'tab-settings')">
+                                    <i class="fas fa-cog text-base mr-1"></i> Solicitudes
+                                </a>
+                            </li>
+                        </ul>
+                        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
+                            <div class="px-4 py-5 flex-auto">
+                                <div class="tab-content tab-space">
+                                    <div class="flex-auto" id="tab-profile">
+                                        {% for job in jobs[::-1] %}
+                                        <div
+                                            class="bg-neutral-100 max-w-sm rounded shadow-lg border-t-4 border-orange-600 mt-3">
+                                            <div class="px-6 py-4 ">
+                                                <div class="font-bold text-xl mb-2 text-emerald-800">{{ job.job_name }}
+                                                </div>
+                                                <p class="text-gray-700 text-base">{{ job.job_desc }}</p>
+                                            </div>
+                                            <div class="mt-0 px-6 pt-4 pb-2">
+                                                <span
+                                                    class="inline-block bg-orange-600 rounded-full px-3 py-1 text-sm font-semibold text-neutral-100 mr-2 mb-2">#trabajo-remoto</span>
+                                                <span
+                                                    class="mb-4 inline-block bg-orange-600 rounded-full px-3 py-1 text-sm font-semibold text-neutral-100 mr-2 mb-2">
+                                                    #diseño-grafico </span>
+
+                                                <hr class="solid border-t">
+                                                </hr>
+
+                                                <div class="mt-2 px- pt-2 pb-">
+                                                    <p class="text-black text-base">
+                                                        Salario: <span
+                                                            class="inline-block bg-emerald-800 rounded-full px-3 py-1 text-sm font-semibold text-neutral-100 mr-2 mb-2">
+                                                            {{ job.job_price }}</span> Gs. por hora </p>
+
+                                                    <p class="mt-4 text-gray-700 text-base">
+                                                        Disponible hasta: <span
+                                                            class="inline-block bg-emerald-800 rounded-full px-3 py-1 text-sm font-semibold text-neutral-100 mr-2 mb-2">
+                                                            23/05/2022 </span> </p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                        {% endfor %}
+                                    </div>
+                                    <div class="hidden" id="tab-settings">
+                                        <p>
+                                            Completely synergize resource taxing relationships via
+                                            premier niche markets. Professionally cultivate one-to-one
+                                            customer service with robust ideas.
+                                            <br />
+                                            <br />
+                                            Dynamically innovate resource-leveling customer service for
+                                            state of the art customer service.
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                        <!-- End of about section -->
-
-                        <div class="my-4"></div>
-
-                        <!-- Experience and education -->
-
-
-                    </ul>
+                    </div>
                 </div>
-                <div>
+                <script type="text/javascript">
+                    function changeAtiveTab(event, tabID) {
+                        let element = event.target;
+                        while (element.nodeName !== "A") {
+                            element = element.parentNode;
+                        }
+                        ulElement = element.parentNode.parentNode;
+                        aElements = ulElement.querySelectorAll("li > a");
+                        tabContents = document.getElementById("tabs-id").querySelectorAll(".tab-content > div");
+                        for (let i = 0; i < aElements.length; i++) {
+                            aElements[i].classList.remove("text-white");
+                            aElements[i].classList.remove("bg-pink-600");
+                            aElements[i].classList.add("text-pink-600");
+                            aElements[i].classList.add("bg-white");
+                            tabContents[i].classList.add("hidden");
+                            tabContents[i].classList.remove("block");
+                        }
+                        element.classList.remove("text-pink-600");
+                        element.classList.remove("bg-white");
+                        element.classList.add("text-white");
+                        element.classList.add("bg-pink-600");
+                        document.getElementById(tabID).classList.remove("hidden");
+                        document.getElementById(tabID).classList.add("block");
+                    }
+                </script>
 
 
-                    </ul>
-                </div>
+                </ul>
             </div>
-            <!-- End of Experience and education grid -->
         </div>
-        <!-- End of profile tab -->
+        <!-- End of Experience and education grid -->
     </div>
+    <!-- End of profile tab -->
+</div>
 </div>
 </div>
 </div>
@@ -221,6 +257,3 @@
 
 </ul>
 </div>
-
-
-
