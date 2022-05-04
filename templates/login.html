@@ -24,7 +24,7 @@
     </div>
     <form class="mt-8 space-y-6" action="/login" method="POST">
       <input type="hidden" name="remember" value="true">
-      <div class="rounded-md shadow-sm -space-y-px">
+      <div class="rounded-md shadow-sm">
         {{ form.hidden_tag() }}
         {{ form.email }}
         {{ form.password }}
@@ -56,5 +56,13 @@
   </div>
 </div>
 </center>
+<script>
+  document.addEventListener("DOMContentLoaded", function(){
+    var email = document.getElementById('email')
+    email.classList.add("shadow-sm", "focus:ring-indigo-500", "focus:border-indigo-500", "block", "w-full", "sm:text-sm", "border-gray-300", "rounded-md", "mb-5", "py-2")
+    var email = document.getElementById('password')
+    email.classList.add("shadow-sm", "focus:ring-indigo-500", "focus:border-indigo-500", "block", "w-full", "sm:text-sm", "border-gray-300", "rounded-md", "py-2")
+  })
+</script>
 </body>
 </html>
