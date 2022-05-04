@@ -43,17 +43,7 @@
             <nav :class="{'flex': open, 'hidden': !open}"
                 class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
                 <div @click.away="open = false" class="relative" x-data="{ open: false }">
-                    <button @click="open = !open"
-                        class="flex flex-row items-center space-x-2 w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent hover:bg-blue-800 md:w-auto md:inline md:mt-0 md:ml-4 hover:bg-gray-200 focus:bg-blue-800 focus:outline-none focus:shadow-outline">
-                        <span>{{user.user_name}}</span>
-                        <img class="inline h-6 rounded-full"
-                            src="https://avatars2.githubusercontent.com/u/24622175?s=60&amp;v=4">
-                        <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}"
-                            class="inline w-4 h-4 transition-transform duration-200 transform">
-                            <path fill-rule="evenodd"
-                                d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
-                                clip-rule="evenodd"></path>
-                        </svg>
+
                     </button>
                     <div x-show="open" x-transition:enter="transition ease-out duration-100"
                         x-transition:enter-start="transform opacity-0 scale-95"
@@ -94,8 +84,8 @@
                             alt="">
                     </div>
                     <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{{user.user_name}}</h1>
-                    <h3 class="text-gray-600 font-lg text-semibold leading-6">Pinguino</h3>
-                    <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">Antes era hombre</p>
+                    <h3 class="text-gray-600 font-lg text-semibold leading-6">Pinguina</h3>
+                    <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">{{user.user_desc}}</p>
                     <ul
                         class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
                         <li class="flex items-center py-3">
@@ -105,7 +95,7 @@
                         </li>
                         <li class="flex items-center py-3">
                             <span>Miembro desde</span>
-                            <span class="ml-auto">Nov 07, 2016</span>
+                            <span class="ml-auto">Abr 29, 2022</span>
                         </li>
                     </ul>
                 </div>
