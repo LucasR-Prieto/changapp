@@ -14,9 +14,9 @@
         
         <div class="bg-emerald-700 rounded-md">
             
-            <br><p class="flex flex-col items-center align-center font-bold text-2xl text-neutral-100 p-auto tracking-wider	">OFERTAS LABORALES</p>
-            <h1>{{ current_user.id }}</h1>
-            <div class="flex flex-col items-center p-10">
+            <br><p class="flex flex-col items-center align-center font-bold text-2xl text-neutral-100 pb-1 tracking-wider	">OFERTAS LABORALES</p>
+            <!--<h1>{{ current_user.id }}</h1>-->
+            <div class="flex flex-col items-center p-10 pt-2">
         <!--Card 1-->
         {% for job in jobs[::-1] %}
         <div class="bg-neutral-100 max-w-sm rounded shadow-lg border-t-4 border-orange-600 mt-3">
@@ -57,7 +57,7 @@
     {% endfor %}
     
     
-    
+<!--inicio menu-->
     <div class="w-full mt-10">
         <!-- <section id="bottom-navigation" class="md:hidden block fixed inset-x-0 bottom-0 z-10 bg-white shadow"> // if shown only tablet/mobile-->
         <section id="bottom-navigation" class="block fixed inset-x-0 bottom-0 z-10 bg-white shadow">
@@ -102,6 +102,7 @@
             </div>    
         </section>
     </div>
+    <!--fin menu-->
 </body>
 <!--
 <!DOCTYPE html>
