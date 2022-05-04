@@ -7,78 +7,91 @@
 </head>
 
 <body class="bg-emerald-800">
-  <div class="max-w-[85rem] mx-auto px-4 sm:px-6 lg:px-8 py-20">
+  <div class= "flex flex-col items-center">
+    <img class="object-center h-20 w-38 my-6 mb-0" src="/static/changapp_texto2.png">
+  </div>
+
+  <div class="max-w-[85rem] mx-auto mt-1 px-4 sm:px-6 lg:px-8 p-auto">
     <div class="bg-white rounded-md">
       <div class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+        <form class="space-y-8 divide-y divide-gray-200" action="/create-job" method="POST" >
           <div class="space-y-8 divide-y divide-gray-200">
             <div>
-              <form action="/create-job" method="POST">
-                <div>
-                  <h3 class="text-lg leading-6 font-bold text-emerald-800">CREAR EMPLEO</h3>
-                  <p class="mt-1 text-sm text-gray-500">Complete el formulario para generar una oferta de empleo</p>
+              <div>
+                <h3 class="text-lg leading-6 font-bold text-emerald-800">CREAR EMPLEO</h3>
+                <p class="mt-1 text-sm text-gray-500">Complete el formulario para generar una oferta de empleo</p>
+              </div>
+
+              <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
+                <div class="sm:col-span-4">
                 </div>
-
-                <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
-                  <div class="sm:col-span-4">
-                  </div>
+              </div>
+              <!--nombre del empleo-->
+              <div class="sm:col-span-6">
+                <label for="about" class="block text-sm font-medium text-gray-700"> Nombre de empleo </label>
+                <div class="mt-1">
+                  <input id="about" name="job_name" rows="3"
+                    class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"></input>
                 </div>
-                <div class="sm:col-span-6">
-                  <label for="about" class="block text-sm font-medium text-gray-700"> Nombre de empleo </label>
-                  <div class="mt-1">
-                    <input id="about" name="job_name" rows="3"
-                      class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"></input>
-                  </div>
-                  <p class="mt-2 text-sm text-gray-500">Describe el empleo en unas cuantas lineas.</p>
+                <p class="mt-2 text-sm text-gray-500">Describe el empleo en unas cuantas lineas.</p>
+              </div>
+              <!--fin del empleo-->
+
+              <!--nombre del descripcion-->
+              <div class="sm:col-span-6 mt-10">
+                <label for="about" class="block text-sm font-medium text-gray-700"> Descripción </label>
+                <div class="mt-1">
+                  <textarea id="about" name="job_desc" rows="3"
+                    class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"></textarea>
                 </div>
+                <p class="mt-2 text-sm text-gray-500">Describe el empleo en unas cuantas lineas.</p>
+              </div>
+              <!--fin de la descripcion-->
 
-                <div class="sm:col-span-6">
-                  <label for="about" class="block text-sm font-medium text-gray-700"> Descripción </label>
-                  <div class="mt-1">
-                    <input id="about" name="job_desc" rows="3"
-                      class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border border-gray-300 rounded-md"></input>
-                  </div>
-                  <p class="mt-2 text-sm text-gray-500">Describe el empleo en unas cuantas lineas.</p>
-                </div>
-
-
-
-                <div class="mt-10">
-                  <label for="price" class="block text-sm font-medium text-gray-700">Price</label>
-                  <div class="mt-1 relative rounded-md shadow-sm">
-                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                      <span class="text-gray-500 sm:text-sm"> $ </span>
+              <!--precio-->
+                  <div class="mt-10">
+                    <label for="price" class="block text-sm font-medium text-gray-700">Price</label>
+                    <div class="mt-1 relative rounded-md shadow-sm">
+                      <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                        <span class="text-gray-500 sm:text-sm"> $ </span>
+                      </div>
+                      <input type="text" name="job_price" id="price" class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md" placeholder="0.00" aria-describedby="price-currency">
+                      <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                        <span class="text-gray-500 sm:text-sm" id="price-currency"> Gs. </span>
+                      </div>
                     </div>
-                    <input type="text" name="job_price" id="price"
-                      class="focus:ring-indigo-500 focus:border-indigo-500 block w-full pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
-                      placeholder="0.00" aria-describedby="price-currency">
-                    <div class="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
-                      <span class="text-gray-500 sm:text-sm" id="price-currency"> Gs. </span>
+                  </div>
+              <!--fin precio-->
+
+                  <div class="sm:col-span-3 mt-10">
+                    <label for="country" class="block text-sm font-medium text-gray-700"> Tiempo límite </label>
+                    <div class="mt-1">
+                      <select id="country" name="country" autocomplete="country-name" class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md">
+                        <option>24 hs</option>
+                        <option>72 hs</option>
+                        <option>1 mes</option>
+                      </select>
+                    </div>
+                  </div> 
+
+                
+                                  
+                  <div class="pt-5">
+                    <div class="flex justify-end">
+                      
+                      <a type="button" href="{{url_for('find_job')}}"
+                        class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Cancelar</a>
+                      <button type="submit"
+                        class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-emerald-700 hover:bg-stone-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Guardar</button>
                     </div>
                   </div>
                 </div>
-
-                <div class="sm:col-span-3 mt-10">
-                  <label for="country" class="block text-sm font-medium text-gray-700"> Tiempo límite </label>
-                  
-                </div>
-
-
-
-                <div class="pt-5">
-                  <div class="flex justify-end">
-                    <a type="button" href="{{url_for('index')}}"
-                      class="bg-white py-2 px-4 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Cancelar</a>
-                    <button type="submit"
-                      class="ml-3 inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-emerald-700 hover:bg-stone-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Guardar</button>
-                  </div>
-                </div>
-            </div>
-          </div>
-        </form>
+              </div>    
+            </div>      
+          </div> 
+        </form> 
       </div>
-    </div>
-  </div>
-  </div>
+    </div>      
   </div>
 </body>
 
