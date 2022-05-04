@@ -1,259 +1,308 @@
-<script src="https://cdn.tailwindcss.com"></script>
-<style>
-    :root {
-        --main-color: #50C878;
-    }
+<!DOCTYPE html>
+<html lang="en">
 
-    .bg-main-color {
-        background-color: var(--main-color);
-    }
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
 
-    .text-main-color {
-        color: var(--main-color);
-    }
-
-    .border-main-color {
-        border-color: var(--main-color);
-    }
-</style>
-<link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
-<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+<body>
 
 
 
-<div class="bg-gray-100">
-    <div class="w-full text-white bg-emerald-700">
-        <div x-data="{ open: false }"
-            class="flex flex-col max-w-screen-xl px-4 mx-auto md:items-center md:justify-between md:flex-row md:px-6 lg:px-8">
-            <div class="p-4 flex flex-row items-center justify-between">
-                <a href="#"
-                    class="text-lg font-semibold tracking-widest uppercase rounded-lg focus:outline-none focus:shadow-outline">Mi
-                    perfil CHANGAPP</a>
-                <button class="md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
-                    <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
-                        <path x-show="!open" fill-rule="evenodd"
-                            d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z"
-                            clip-rule="evenodd"></path>
-                        <path x-show="open" fill-rule="evenodd"
-                            d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z"
-                            clip-rule="evenodd"></path>
-                    </svg>
-                </button>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --main-color: #50C878;
+        }
+
+        .bg-main-color {
+            background-color: var(--main-color);
+        }
+
+        .text-main-color {
+            color: var(--main-color);
+        }
+
+        .border-main-color {
+            border-color: var(--main-color);
+        }
+    </style>
+    <link href="https://unpkg.com/tailwindcss@^1.0/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
+
+
+
+    <div class="bg-gray-100">
+        <!-- inicio barra changapp -->
+
+        <div class="bg-gray-100">
+            <div class="w-full text-white bg-emerald-700">
+                <nav class="flex" class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-center md:flex-row">
+                    <img class="object-center h-20 w-38 my-0 mx-auto" src="/static/changapp_texto2.png">
+
+                </nav>
             </div>
-            <nav :class="{'flex': open, 'hidden': !open}"
-                class="flex-col flex-grow pb-4 md:pb-0 hidden md:flex md:justify-end md:flex-row">
-                <div @click.away="open = false" class="relative" x-data="{ open: false }">
-
-                    </button>
-                    <div x-show="open" x-transition:enter="transition ease-out duration-100"
-                        x-transition:enter-start="transform opacity-0 scale-95"
-                        x-transition:enter-end="transform opacity-100 scale-100"
-                        x-transition:leave="transition ease-in duration-75"
-                        x-transition:leave-start="transform opacity-100 scale-100"
-                        x-transition:leave-end="transform opacity-0 scale-95"
-                        class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg md:w-48">
-                        <div class="py-2 bg-white text-blue-800 text-sm rounded-sm border border-main-color shadow-sm">
-                            <a class="block px-4 py-2 mt-2 text-sm bg-white md:mt-0 focus:text-gray-900 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                                href="#">Configuracion</a>
-                            <a class="block px-4 py-2 mt-2 text-sm bg-white md:mt-0 focus:text-gray-900 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                                href="#">Ayuda</a>
-                            <div class="border-b"></div>
-                            <a class="block px-4 py-2 mt-2 text-sm bg-white md:mt-0 focus:text-gray-900 hover:bg-indigo-100 focus:bg-gray-200 focus:outline-none focus:shadow-outline"
-                                href="#">Cerrar Sesion</a>
-                        </div>
-                    </div>
-                </div>
-            </nav>
         </div>
-    </div>
-    <!-- End of Navbar -->
 
-    <div class="container mx-auto my-5 p-5">
-        <div class="md:flex no-wrap md:-mx-2 ">
-            <!-- Left Side -->
-            <div class="w-full md:w-3/12 md:mx-2">
+        <!-- final barra changapp -->
+        <!-- End of Navbar -->
 
-
-                <!-- CARTA DE PERFIL E IMAGEN DE AVATAR -->
+        <div class="container mx-auto my-5 p-5">
+            <div class="md:flex no-wrap md:-mx-2 ">
+                <!-- Left Side -->
+                <div class="w-full md:w-3/12 md:mx-2">
 
 
-                <div class="bg-white p-3 border-t-4 border-emerald-700">
-                    <div class="image overflow-hidden">
-                        <img class="h-auto w-full mx-auto"
-                            src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg"
-                            alt="">
-                    </div>
-                    <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{{current_user.user_name}}</h1>
-                    <h3 class="text-gray-600 font-lg text-semibold leading-6">Pinguina</h3>
-                    <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">{{current_user.user_desc}}</p>
-                    <ul
-                        class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
-                        <li class="flex items-center py-3">
-                            <span>Estado</span>
-                            <span class="ml-auto"><span
-                                    class="bg-green-500 py-1 px-2 rounded text-white text-sm">Activo</span></span>
-                        </li>
-                        <li class="flex items-center py-3">
-                            <span>Miembro desde</span>
-                            <span class="ml-auto">Abr 29, 2022</span>
-                        </li>
-                    </ul>
-                </div>
+                    <!-- CARTA DE PERFIL E IMAGEN DE AVATAR -->
 
 
-                <!-- FIN DE LA CARTA DE PERFIL -->
-
-            </div>
-            <!-- Right Side -->
-            <div class="w-full md:w-9/12 mx-2 h-64">
-                <!-- Profile tab -->
-                <!-- About Section -->
-                <div class="bg-white p-3 shadow-sm rounded-sm">
-                    <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
-                        <span clas="text-green-500">
-                            <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
-                                stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-                            </svg>
-                        </span>
-
-                        <!--ACA EMPIEZA LA INFORMACION DE PERFIL-->
-
-
-                        <span class="tracking-wide">Sobre mi</span>
-                    </div>
-                    <div class="text-gray-700">
-                        <div class="grid md:grid-cols-2 text-sm">
-                            <div class="grid grid-cols-2">
-                                <div class="px-4 py-2 font-semibold">Nombre</div>
-                                <div class="px-4 py-2">{{current_user.user_name}}</div>
-                            </div>
-                            <div class="grid grid-cols-2">
-                                <div class="px-4 py-2 font-semibold">Apellido</div>
-                                <div class="px-4 py-2">{{current_user.user_last_name}}</div>
-                            </div>
-                            <div class="grid grid-cols-2">
-                                <div class="px-4 py-2 font-semibold">Email.</div>
-                                <div class="px-4 py-2">
-                                    <a class="text-blue-800" href="mailto:jane@example.com">{{current_user.user_email}}</a>
-                                </div>
-                            </div>
-
+                    <div class="bg-white p-3 border-t-4 border-emerald-700">
+                        <div class="image overflow-hidden">
+                            <img class="h-auto w-full mx-auto"
+                                src="https://lavinephotography.com.au/wp-content/uploads/2017/01/PROFILE-Photography-112.jpg"
+                                alt="">
                         </div>
-                    </div>
-                    <!--<button
-                        class="block w-full text-emerald-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">Mostrar mas informacion</button> -->
-                </div>
-                <div class="flex flex-wrap" id="tabs-id">
-                    <div class="w-full">
-                        <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
-                            <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                                <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-white bg-pink-600"
-                                    onclick="changeAtiveTab(event,'tab-profile')">
-                                    <i class="fas fa-space-shuttle text-base mr-1"></i> Ofertas Creadas
-                                </a>
+                        <h1 class="text-gray-900 font-bold text-xl leading-8 my-1">{{current_user.user_name}}</h1>
+                        <h3 class="text-gray-600 font-lg text-semibold leading-6">Pinguina</h3>
+                        <p class="text-sm text-gray-500 hover:text-gray-600 leading-6">{{current_user.user_desc}}</p>
+                        <ul
+                            class="bg-gray-100 text-gray-600 hover:text-gray-700 hover:shadow py-2 px-3 mt-3 divide-y rounded shadow-sm">
+                            <li class="flex items-center py-3">
+                                <span>Estado</span>
+                                <span class="ml-auto"><span
+                                        class="bg-green-500 py-1 px-2 rounded text-white text-sm">Activo</span></span>
                             </li>
-                            <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
-                                <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-pink-600 bg-white"
-                                    onclick="changeAtiveTab(event,'tab-settings')">
-                                    <i class="fas fa-cog text-base mr-1"></i> Solicitudes
-                                </a>
+                            <li class="flex items-center py-3">
+                                <span>Miembro desde</span>
+                                <span class="ml-auto">Abr 29, 2022</span>
                             </li>
                         </ul>
-                        <div class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded">
-                            <div class="px-4 py-5 flex-auto">
-                                <div class="tab-content tab-space">
-                                    <div class="flex-auto" id="tab-profile">
-                                        {% for job in jobs[::-1] %}
-                                        <div
-                                            class="bg-neutral-100 max-w-sm rounded shadow-lg border-t-4 border-orange-600 mt-3">
-                                            <div class="px-6 py-4 ">
-                                                <div class="font-bold text-xl mb-2 text-emerald-800">{{ job.job_name }}
-                                                </div>
-                                                <p class="text-gray-700 text-base">{{ job.job_desc }}</p>
-                                            </div>
-                                            <div class="mt-0 px-6 pt-4 pb-2">
-                                                <span
-                                                    class="inline-block bg-orange-600 rounded-full px-3 py-1 text-sm font-semibold text-neutral-100 mr-2 mb-2">#trabajo-remoto</span>
-                                                <span
-                                                    class="mb-4 inline-block bg-orange-600 rounded-full px-3 py-1 text-sm font-semibold text-neutral-100 mr-2 mb-2">
-                                                    #diseño-grafico </span>
+                    </div>
 
-                                                <hr class="solid border-t">
-                                                </hr>
 
-                                                <div class="mt-2 px- pt-2 pb-">
-                                                    <p class="text-black text-base">
-                                                        Salario: <span
-                                                            class="inline-block bg-emerald-800 rounded-full px-3 py-1 text-sm font-semibold text-neutral-100 mr-2 mb-2">
-                                                            {{ job.job_price }}</span> Gs. por hora </p>
+                    <!-- FIN DE LA CARTA DE PERFIL -->
 
-                                                    <p class="mt-4 text-gray-700 text-base">
-                                                        Disponible hasta: <span
-                                                            class="inline-block bg-emerald-800 rounded-full px-3 py-1 text-sm font-semibold text-neutral-100 mr-2 mb-2">
-                                                            23/05/2022 </span> </p>
+                </div>
+                <!-- Right Side -->
+                <div class="w-full md:w-9/12 mx-2 h-64">
+                    <!-- Profile tab -->
+                    <!-- About Section -->
+                    <div class="bg-white p-3 shadow-sm rounded-sm">
+                        <div class="flex items-center space-x-2 font-semibold text-gray-900 leading-8">
+                            <span clas="text-green-500">
+                                <svg class="h-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                </svg>
+                            </span>
 
-                                                </div>
-                                            </div>
-                                        </div>
-                                        {% endfor %}
+                            <!--ACA EMPIEZA LA INFORMACION DE PERFIL-->
+
+
+                            <span class="tracking-wide">Sobre mi</span>
+                        </div>
+                        <div class="text-gray-700">
+                            <div class="grid md:grid-cols-2 text-sm">
+                                <div class="grid grid-cols-2">
+                                    <div class="px-4 py-2 font-semibold">Nombre</div>
+                                    <div class="px-4 py-2">{{current_user.user_name}}</div>
+                                </div>
+                                <div class="grid grid-cols-2">
+                                    <div class="px-4 py-2 font-semibold">Apellido</div>
+                                    <div class="px-4 py-2">{{current_user.user_last_name}}</div>
+                                </div>
+                                <div class="grid grid-cols-2">
+                                    <div class="px-4 py-2 font-semibold">Email.</div>
+                                    <div class="px-4 py-2">
+                                        <a class="text-blue-800"
+                                            href="mailto:jane@example.com">{{current_user.user_email}}</a>
                                     </div>
-                                    <div class="hidden" id="tab-settings">
-                                        <p>
-                                            Completely synergize resource taxing relationships via
-                                            premier niche markets. Professionally cultivate one-to-one
-                                            customer service with robust ideas.
-                                            <br />
-                                            <br />
-                                            Dynamically innovate resource-leveling customer service for
-                                            state of the art customer service.
-                                        </p>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!--<button
+                        class="block w-full text-emerald-800 text-sm font-semibold rounded-lg hover:bg-gray-100 focus:outline-none focus:shadow-outline focus:bg-gray-100 hover:shadow-xs p-3 my-4">Mostrar mas informacion</button> -->
+                    </div>
+                    <div class="flex flex-wrap" id="tabs-id">
+                        <div class="w-full">
+                            <ul class="flex mb-0 list-none flex-wrap pt-3 pb-4 flex-row">
+                                <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                                    <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-white bg-pink-600"
+                                        onclick="changeAtiveTab(event,'tab-profile')">
+                                        <i class="fas fa-space-shuttle text-base mr-1"></i> Ofertas Creadas
+                                    </a>
+                                </li>
+                                <li class="-mb-px mr-2 last:mr-0 flex-auto text-center">
+                                    <a class="text-xs font-bold uppercase px-5 py-3 shadow-lg rounded block leading-normal text-pink-600 bg-white"
+                                        onclick="changeAtiveTab(event,'tab-settings')">
+                                        <i class="fas fa-cog text-base mr-1"></i> Solicitudes
+                                    </a>
+                                </li>
+                            </ul>
+                            <div
+                                class="relative flex flex-col min-w-0 break-words bg-white w-full mb-6 shadow-lg rounded ">
+                                <div class="px-4 py-5 flex-auto">
+                                    <div class="tab-content tab-space  ">
+                                        <div class="flex-auto " id="tab-profile">
+                                            {% for job in jobs[::-1] %}
+                                            <div class="bg-neutral-100 max-w-sm rounded shadow-lg border-t-4 border-orange-600 mt-10">
+                                                <div class="px-6 py-4 ">
+                                                    <div class="font-bold text-xl mb-2 text-emerald-800">{{ job.job_name
+                                                        }}
+                                                    </div>
+                                                    <p class="text-gray-700 text-base">{{ job.job_desc }}</p>
+                                                </div>
+                                                <div class="mt-0 px-6 pt-4 pb-2">
+                                                    <span
+                                                        class="inline-block bg-orange-600 rounded-full px-3 py-1 text-sm font-semibold text-neutral-100 mr-2 mb-2">#trabajo-remoto</span>
+                                                    <span
+                                                        class="mb-4 inline-block bg-orange-600 rounded-full px-3 py-1 text-sm font-semibold text-neutral-100 mr-2 mb-2">
+                                                        #diseño-grafico </span>
+
+                                                    <hr class="solid border-t">
+                                                    </hr>
+
+                                                    <div class="mt-2 px- pt-2 pb-">
+                                                        <p class="text-black text-base">
+                                                            Salario: <span
+                                                                class="inline-block bg-emerald-800 rounded-full px-3 py-1 text-sm font-semibold text-neutral-100 mr-2 mb-2">
+                                                                {{ job.job_price }}</span> Gs. por hora </p>
+
+                                                        <p class="mt-4 text-gray-700 text-base">
+                                                            Disponible hasta: <span
+                                                                class="inline-block bg-emerald-800 rounded-full px-3 py-1 text-sm font-semibold text-neutral-100 mr-2 mb-2">
+                                                                23/05/2022 </span> </p>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            {% endfor %}
+                                        </div>
+                                        <div class="hidden" id="tab-settings">
+                                            <p>
+                                                Completely synergize resource taxing relationships via
+                                                premier niche markets. Professionally cultivate one-to-one
+                                                customer service with robust ideas.
+                                                <br />
+                                                <br />
+                                                Dynamically innovate resource-leveling customer service for
+                                                state of the art customer service.
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
+
+            <!--inicio menu-->
+            <div class="w-full mt-10 ">
+                <!-- <section id="bottom-navigation" class="md:hidden block fixed inset-x-0 bottom-0 z-10 bg-white shadow"> // if shown only tablet/mobile-->
+                <section id="bottom-navigation" class="block fixed inset-x-0 bottom-0 z-10 bg-white shadow">
+                    <div id="tabs" class="flex justify-between">
+                    <!--boton home-->
+                        <a href="{{url_for('index')}}" class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="inline-block mb-1 h-6 w-6" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                            </svg>
+        
+                            <span class="tab tab-home block text-xs">Home</span>
+                        </a>
+        
+        
+                        </svg>
+        
+                    <!--boton fin_job-->
+                        <a href="{{url_for('find_job')}}"
+                            class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="inline-block mb-1 h-6 w-6" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+        
+                            <span class="tab tab-home block text-xs">Ofertas</span>
+                        </a>
+        
+                        <!--boton create_job-->
+                        <a href="{{url_for('create_job')}}"
+                            class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="inline-block mb-1 h-6 w-6" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M12 9v3m0 0v3m0-3h3m-3 0H9m12 0a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            <span class="tab tab-kategori block text-xs">Crear oferta</span>
+                        </a>
+        
+        
+        
+                        <!--boton logout-->
+                        <a href="{{url_for('logout')}}"
+                            class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="inline-block mb-1 h-6 w-6" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round"
+                                    d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                            </svg>
+                            <span class="tab tab-explore block text-xs">Salir</span>
+                        </a>
                     </div>
-                </div>
-                <script type="text/javascript">
-                    function changeAtiveTab(event, tabID) {
-                        let element = event.target;
-                        while (element.nodeName !== "A") {
-                            element = element.parentNode;
-                        }
-                        ulElement = element.parentNode.parentNode;
-                        aElements = ulElement.querySelectorAll("li > a");
-                        tabContents = document.getElementById("tabs-id").querySelectorAll(".tab-content > div");
-                        for (let i = 0; i < aElements.length; i++) {
-                            aElements[i].classList.remove("text-white");
-                            aElements[i].classList.remove("bg-pink-600");
-                            aElements[i].classList.add("text-pink-600");
-                            aElements[i].classList.add("bg-white");
-                            tabContents[i].classList.add("hidden");
-                            tabContents[i].classList.remove("block");
-                        }
-                        element.classList.remove("text-pink-600");
-                        element.classList.remove("bg-white");
-                        element.classList.add("text-white");
-                        element.classList.add("bg-pink-600");
-                        document.getElementById(tabID).classList.remove("hidden");
-                        document.getElementById(tabID).classList.add("block");
-                    }
-                </script>
-
-
-                </ul>
+                </section>
             </div>
+            <!--Fin menu-->
+
+
+
+                    </div>
+                    <script type="text/javascript">
+                        function changeAtiveTab(event, tabID) {
+                            let element = event.target;
+                            while (element.nodeName !== "A") {
+                                element = element.parentNode;
+                            }
+                            ulElement = element.parentNode.parentNode;
+                            aElements = ulElement.querySelectorAll("li > a");
+                            tabContents = document.getElementById("tabs-id").querySelectorAll(".tab-content > div");
+                            for (let i = 0; i < aElements.length; i++) {
+                                aElements[i].classList.remove("text-white");
+                                aElements[i].classList.remove("bg-pink-600");
+                                aElements[i].classList.add("text-pink-600");
+                                aElements[i].classList.add("bg-white");
+                                tabContents[i].classList.add("hidden");
+                                tabContents[i].classList.remove("block");
+                            }
+                            element.classList.remove("text-pink-600");
+                            element.classList.remove("bg-white");
+                            element.classList.add("text-white");
+                            element.classList.add("bg-pink-600");
+                            document.getElementById(tabID).classList.remove("hidden");
+                            document.getElementById(tabID).classList.add("block");
+                        }
+                    </script>
+
+
+                    </ul>
+                </div>
+            </div>
+            <!-- End of Experience and education grid -->
         </div>
-        <!-- End of Experience and education grid -->
+        <!-- End of profile tab -->
+
     </div>
-    <!-- End of profile tab -->
-</div>
-</div>
-</div>
-</div>
 
 
 
-</ul>
-</div>
+
+
+
+</body>
+
+</html>
