@@ -18,15 +18,43 @@
     </div>
 
     <center>
-        <div class="flex flex-col h-auto align-middle justify-center items-center">
+        <div class="flex-col h-auto align-middle justify-center items-center">
             <a type="button" href="{{url_for('find_job')}}"
                 class="  mt-14 items-center px-20 py-5 border border-transparent text-base tracking-wide text-md sm:text-2xl font-bold rounded-3xl shadow-sm text-neutral-100 bg-gradient-to-r from-emerald-600 to-emerald-800 hover:bg-emerald-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-50">APLICA</a>
             <br><a type="button" href="{{url_for('create_job') }}"
-                class="  mt-14 items-center px-20 py-5 border border-transparent text-base tracking-wide text-md sm:text-2xl font-bold rounded-3xl shadow-sm text-neutral-100 bg-gradient-to-r from-emerald-600 to-emerald-800 hover:bg-emerald-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-50">CREAR</a></br>
+                class="  mt-8 items-center px-20 py-5 border border-transparent text-base tracking-wide text-md sm:text-2xl font-bold rounded-3xl shadow-sm text-neutral-100 bg-gradient-to-r from-emerald-600 to-emerald-800 hover:bg-emerald-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-neutral-50">CREAR</a></br>
+        </div>
+        <div class="mt-1">
+            <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+            <lottie-player src="https://assets10.lottiefiles.com/private_files/lf30_ymkcydpu.json"
+                background="transparent" speed="1" style="width: 300px; height: 300px;" loop autoplay>
+            </lottie-player>
         </div>
     </center>
 
     <footer class="bg-emerald-700 fixed bottom-0 w-full">
+        {% if current_user.is_authenticated %}
+        <div class="w-full mt-10">
+            <!-- <section id="bottom-navigation" class="md:hidden block fixed inset-x-0 bottom-0 z-10 bg-white shadow"> // if shown only tablet/mobile-->
+            <section id="bottom-navigation" class="block fixed inset-x-0 bottom-0 z-10 bg-emerald-700 shadow">
+                <div id="tabs" class="flex justify-between">
+            <a href="{{url_for('profile')}}" class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="inline-block mb-1 h-6 w-6 " fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg> 
+            
+                <span class="tab tab-home block text-xs text-white">Perfil</span>
+            </a>
+            <a href="{{url_for('logout')}}" class="w-full focus:text-teal-500 hover:text-teal-500 justify-center inline-block text-center pt-2 pb-1">
+                <svg xmlns="http://www.w3.org/2000/svg" class="inline-block mb-1 h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white" stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                  </svg>
+                <span class="tab tab-explore block text-xs text-white">Salir</span>
+            </a>    
+            </div>
+        </section>
+        </div>
+        {% else %}
         <nav class="max-w-7xl mx-auto px-4 sm:px+-6 lg:px-8" aria-label="Bottom">
             <div class="w-full py-3 flex items-center justify-center lg:border-none">
                 <div class="space-x-4">
@@ -34,9 +62,11 @@
                         class="inline-block bg-EMERALD py-2 px-4 border border-transparent rounded-md text-base font-medium text-white hover:bg-opacity-75">Ingresar</a>
                     <a href="{{url_for('register') }}"
                         class="inline-block bg-white py-2 px-4 border border-transparent rounded-md text-base zfont-medium text-emerald-700 hover:bg-indigo-50">Registrarse</a>
-                        <a type="button" href="{{url_for('profile')}}" class="inline-flex items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">{{ user.user_name}}</a>
+
                 </div>
         </nav>
+
+        {% endif %}
     </footer>
 </body>
 
