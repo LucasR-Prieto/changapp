@@ -76,24 +76,25 @@ def login():
 @app.route('/register', methods=['POST','GET'])
 def register(): 
     form = RegisterForm()
+    # if request.method == 'POST':
     if request.method == 'POST':
+        new_user = User(
+            user_name=request.form['name'],
+            user_last_name=request.form['last_name'],
+            user_desc=request.form['desc'],
+            user_email=request.form['email'],
+            user_pass=request.form['password'],
+            user_done = False
+        )        
         if form.validate_on_submit():
             hashed_password = generate_password_hash(form.password.data, method='sha256')
             new_user = User(user_name = form.username.data, user_email = form.email.data, user_pass = hashed_password)
-        # if request.method == 'POST':
-        #     user = User(
-        #         user_name=request.form['name'],
-        #         user_last_name=request.form['last_name'],
-        #         user_desc=request.form['desc'],
-        #         user_email=request.form['email'],
-        #         user_pass=request.form['password'],
-        #         user_done = False
-        #     )
+
             db.session.add(new_user)
             db.session.commit()
-            return redirect(url_for('index'))
-    else:
-        return render_template('register.html', form=form)
+            return redirect(url_for('index.html'))
+        else:
+            return render_template('register.html', form=form)
 
 
 @app.route('/create-job', methods=['POST','GET'])
