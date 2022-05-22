@@ -48,7 +48,8 @@ class LoginForm(FlaskForm):
 
 class RegisterForm(FlaskForm):
     email = StringField('email', validators=[InputRequired(), Email(message='Invalid email'), Length(max=50)])
-    username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
+    first_name = StringField('first_name', validators=[InputRequired(), Length(min=4, max=15)])
+    last_name = StringField('last_name', validators=[InputRequired(), Length(min=4, max=15)])
     password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
 
 
@@ -64,9 +65,9 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(user_email=form.email.data).first()
         if user:
-            if check_password_hash(user.password, form.password.data):
+            if check_password_hash(user.user_pass, form.password.data):
                 login_user(user, remember=form.remember.data)
-                return redirect(url_for('index'))
+#            return redirect(url_for('index.html'))
 
         return '<h1>Invalid username or password</h1>'
 
@@ -92,9 +93,9 @@ def register():
 
             db.session.add(new_user)
             db.session.commit()
-            return redirect(url_for('index.html'))
-        else:
-            return render_template('register.html', form=form)
+            return redirect(url_for('index'))
+    else:
+        return render_template('register.html', form=form)
 
 
 @app.route('/create-job', methods=['POST','GET'])

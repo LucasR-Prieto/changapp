@@ -58,7 +58,9 @@
                                 </div>
                                 <div class="mt-6 grid grid-cols-1 gap-y-6 gap-x-4 sm:grid-cols-6">
                                     <div class="sm:col-span-3">
-                                        <label for="first-name" class="block text-sm font-medium text-gray-700"> Nombre
+                                        <label> 
+                                            Nombre
+                                            {{ form.first_name }}
                                         </label>
                                         <div class="mt-1">
                                             <input type="text" name="name" id="first-name" autocomplete="given-name"
@@ -67,7 +69,8 @@
                                     </div>
 
                                     <div class="sm:col-span-3">
-                                        <label for="last-name" class="block text-sm font-medium text-gray-700"> Apellido
+                                        <label > Apellido
+                                            {{ form.last_name }}
                                         </label>
                                         <div class="mt-1">
                                             <input type="text" name="last_name" id="last-name"
@@ -77,8 +80,11 @@
                                     </div>
 
                                     <div class="sm:col-span-4">
-                                        <label for="email" class="block text-sm font-medium text-gray-700"> Correo
-                                            electrónico </label>
+                                        <label for="email"> 
+                                            Correo
+                                            electrónico 
+                                            {{ form.email }}
+                                        </label>
                                         <div class="mt-1">
                                             <input id="email" name="email" type="email" autocomplete="email"
                                                 class="shadow-md border-2 focus:ring-emerald-600 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md mb-8 py-2">
@@ -88,8 +94,10 @@
 
 
                                     <div class="sm:col-span-6">
-                                        <label for="street-address" class="block text-sm font-medium text-gray-700">
-                                            Contraseña </label>
+                                        <label for="street-address">
+                                            Contraseña 
+                                            {{ form.password }}
+                                        </label>
                                         <div class="mt-1">
                                             <input type="text" name="password" id="street-address"
                                                 autocomplete="street-address"
@@ -184,9 +192,9 @@
 
                                 </div>
                                 {{ form.hidden_tag() }}
-                                {{ form.username }}
-                                {{ form.email }}
-                                {{ form.password }}
+                                
+                                
+                                
                                 <div class="pt-5">
                                     <div class="flex justify-end items-bottom">
                                         <a type="button" href="{{url_for('index')}}"
