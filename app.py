@@ -2,8 +2,9 @@
 from flask import Flask, render_template, url_for, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
-from wtforms import PasswordField, EmailField, BooleanField
-from wtforms.validators import InputRequired, Length
+from wtforms import PasswordField, EmailField, BooleanField, StringField
+from wtforms.validators import InputRequired, Length, Email
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 
 
@@ -45,6 +46,11 @@ class LoginForm(FlaskForm):
     password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
     remember = BooleanField('remember me')
 
+class RegisterForm(FlaskForm):
+    email = StringField('email', validators=[InputRequired(), Email(message='Invalid email'), Length(max=50)])
+    username = StringField('username', validators=[InputRequired(), Length(min=4, max=15)])
+    password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
+
 
 @app.route("/", methods=['POST','GET'])
 def index():
@@ -58,9 +64,9 @@ def login():
     if form.validate_on_submit():
         user = User.query.filter_by(user_email=form.email.data).first()
         if user:
-            print()
-            login_user(user, remember=form.remember.data)
-            return redirect(url_for('index'))
+            if check_password_hash(user.password, form.password.data):
+                login_user(user, remember=form.remember.data)
+                return redirect(url_for('index'))
 
         return '<h1>Invalid username or password</h1>'
 
@@ -69,16 +75,21 @@ def login():
 
 @app.route('/register', methods=['POST','GET'])
 def register(): 
-    if request.method == 'POST':
-        user = User(
-            user_name=request.form['name'],
-            user_last_name=request.form['last_name'],
-            user_desc=request.form['desc'],
-            user_email=request.form['email'],
-            user_pass=request.form['password'],
-            user_done = False
-        )
-        db.session.add(user)
+    form = RegisterForm()
+
+    if form.validate_on_submit():
+        hashed_password = generate_password_hash(form.password.data, method='sha256')
+        new_user = User(user_name = form.username.data, email = form.email.data, password = hashed_password)
+    # if request.method == 'POST':
+    #     user = User(
+    #         user_name=request.form['name'],
+    #         user_last_name=request.form['last_name'],
+    #         user_desc=request.form['desc'],
+    #         user_email=request.form['email'],
+    #         user_pass=request.form['password'],
+    #         user_done = False
+    #     )
+        db.session.add(new_user)
         db.session.commit()
         return redirect(url_for('index'))
     else:
