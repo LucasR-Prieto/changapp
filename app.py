@@ -47,7 +47,7 @@ class LoginForm(FlaskForm):
     remember = BooleanField('remember me')
 
 class RegisterForm(FlaskForm):
-    email = StringField('email', validators=[InputRequired(), Email(message='Invalid email'), Length(max=50)])
+    email = StringField('email', validators=[InputRequired(), Email(message='Invalid email'), Length(max=80)])
     first_name = StringField('first_name', validators=[InputRequired(), Length(min=4, max=15)])
     last_name = StringField('last_name', validators=[InputRequired(), Length(min=4, max=15)])
     password = PasswordField('password', validators=[InputRequired(), Length(min=8, max=80)])
@@ -64,10 +64,15 @@ def login():
 
     if form.validate_on_submit():
         user = User.query.filter_by(user_email=form.email.data).first()
+        print(form.password.data, user.user_pass)
         if user:
-            if check_password_hash(user.user_pass, form.password.data):
+            print("entre aca")
+            hashpassed = check_password_hash(user.user_pass, form.password.data)
+            print(hashpassed)
+            if hashpassed:
+                print("alo")
                 login_user(user, remember=form.remember.data)
-#            return redirect(url_for('index.html'))
+            return redirect(url_for('index'))
 
         return '<h1>Invalid username or password</h1>'
 
