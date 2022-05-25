@@ -3,7 +3,7 @@ from flask import Flask, render_template, url_for, request, redirect, url_for
 from flask_sqlalchemy import SQLAlchemy
 from flask_wtf import FlaskForm
 from wtforms import PasswordField, EmailField, BooleanField, StringField
-from wtforms.validators import InputRequired, Length, Email
+from wtforms.validators import InputRequired, Length, Email, DataRequired
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_login import LoginManager, UserMixin, login_user, login_required, logout_user, current_user
 
@@ -80,21 +80,30 @@ def register():
     # if request.method == 'POST':
     if request.method == 'POST':
         new_user = User(
-            user_name=request.form['name'],
+            user_name=request.form['first_name'],
             user_last_name=request.form['last_name'],
             user_desc=request.form['desc'],
             user_email=request.form['email'],
             user_pass=request.form['password'],
             user_done = False
-        )        
-        if form.validate_on_submit():
-            hashed_password = generate_password_hash(form.password.data, method='sha256')
-            new_user = User(user_name = form.username.data, user_email = form.email.data, user_pass = hashed_password)
+        )
+        print(request.form['first_name'], "probando")
+        print(form.email.data, "Email....")
+    if form.validate_on_submit():
+        print("Entra aca?")
+        hashed_password = generate_password_hash(form.password.data, method='sha256')
+        new_user = User(
+            user_name=form.first_name.data,
+            user_last_name=form.last_name.data,
+            user_email=form.email.data,
+            user_pass=hashed_password
+        )
 
-            db.session.add(new_user)
-            db.session.commit()
-            return redirect(url_for('index'))
+        db.session.add(new_user)
+        db.session.commit()
+        return redirect(url_for('index'))
     else:
+        print(form.errors, "<======= Errores en el formulario")
         return render_template('register.html', form=form)
 
 
